@@ -1,0 +1,11 @@
+{
+    "server":{
+        "port":5000
+    },
+    "ari":{
+        "url":"192.168.100.12",
+        "port":"5094",
+        "username": "user",
+        "password": "user"
+    }
+}
