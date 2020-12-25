@@ -10,4 +10,13 @@ app.use(cors());
 app.options("*", cors());
 app.use(bodyParser());
 
+app.get('/api/asterisk-information', async (req, res) => {
+    try {
+        const {getInfoAsterisk} = await require('./ARI/ari.info.js')
+        console.log(await getInfoAsterisk())
+    } catch (err) {
+        console.log(err)
+    }
+})
+
 app.listen(PORT, () => console.log(`server has been started ${PORT}`));
