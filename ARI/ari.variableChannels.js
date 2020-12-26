@@ -1,18 +1,14 @@
-const config = require("config");
-const URL = config.get('ari.url')
-const PORT = config.get('ari.port')
-const USER = config.get('ari.username')
-const PASSWORD = config.get('ari.password')
+const ari_config = require('./ari.config')
 const axios = require('axios')
 
 const postVariableChannel = async (count_channels) => {
-    return await axios.post(`http://${URL}:${PORT}/ari/asterisk/variable?variable=COUNT_CHANNELS&value=${count_channels}&api_key=${USER}:${PASSWORD}`)
+    return await axios.post(`http://${ari_config.URL}:${ari_config.PORT}/ari/asterisk/variable?variable=COUNT_CHANNEL&value=${count_channels}&api_key=${ari_config.USER}:${ari_config.PASSWORD}`)
                 .then(res => res.data)
                 .catch(err => console.log(err))
 }
 
 const getVariableChannel = async () => {
-    return await axios.get(`http://${URL}:${PORT}/ari/asterisk/variable?variable=COUNT_CHANNEL&api_key=${USER}:${PASSWORD}`)
+    return await axios.get(`http://${ari_config.URL}:${ari_config.PORT}/ari/asterisk/variable?variable=COUNT_CHANNEL&api_key=${ari_config.USER}:${ari_config.PASSWORD}`)
                 .then(res => res.data)
                 .catch(err => console.log(err))
 }
