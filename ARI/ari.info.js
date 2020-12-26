@@ -1,3 +1,4 @@
+const ari_config = require('./ari.config')
 const config = require("config");
 const URL = config.get('ari.url')
 const PORT = config.get('ari.port')
