@@ -7,5 +7,5 @@ const delFile = (file_dir, file) => {
 };
 
 module.exports = {
-    delFile
-}
+  delFile,
+};

@@ -6,5 +6,5 @@ const createFileTXT = (file_dir, file_name, header) => {
 };
 
 module.exports = {
-  createFileTXT
-}
+  createFileTXT,
+};
