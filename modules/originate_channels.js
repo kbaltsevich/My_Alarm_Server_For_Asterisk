@@ -3,7 +3,7 @@ const { write } = require("../dirJs/update_file_tab.dir");
 const { getVariableChannel } = require("../ARI/ari.variableChannels");
 const { postOriginateOne } = require("../ARI/ari.originate_one");
 
-const createChannels = async (arr_channels, count_channels) => {
+const createChannels = async (arr_channels, count_channels, text_message, ip_ats, count_dial, time_dial) => {
   try {
     if (!!arr_channels.length && arr_channels.length > 0) {
       const file_records_name = `${Date.now()}`;
@@ -27,7 +27,12 @@ const createChannels = async (arr_channels, count_channels) => {
           +count_asterisk_channel.value != 0 &&
           +count_asterisk_channel.value <= +count_channels
         ) {
-          await postOriginateOne(arr_channels[count]);
+            const user = arr_channels[count]
+            user.variables.text_message = `${text_message}`
+            user.variables.adress_ats = `${ip_ats}`
+            user.variables.count_d = `${count_dial}`
+            user.variables.time_dial = `${time_dial}`
+          await postOriginateOne(user);
           count++;
         }
       }
